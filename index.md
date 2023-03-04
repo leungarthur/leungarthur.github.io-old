@@ -19,5 +19,5 @@ The goal of my PhD research is to gain mechanistic understanding into the evolut
 - NSERC Canadian Forest Sector supplement
 
 **Contact**
-- Email (art.leung <at> mail.utoronto.ca)
+- Email (art.leung \<at\> mail.utoronto.ca)
 - Twitter ([@aleungplants](https://twitter.com/aleungplants))
