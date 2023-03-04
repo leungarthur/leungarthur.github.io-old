@@ -14,8 +14,9 @@ So, I'd like to share a script that does that. I originally made this for my own
 
 - I used `here::here()` to get the filepath to the location of the R script as a string. This is useful because it works on macOS and Windows, and it allows the script to be portable (e.g., to be used in a .bat or .command file )
 - I defined a function called `read_licor()`, which takes the path of the .xlsx file from a LI-6400 you want to read and outputs a dataframe with all the columns in the file.
-  - I removed the first 8 lines of the Li-Cor file with `skip = 8`. Those lines have important metadata but isn't needed for most data analyses. The following row would then be the names of the columns which turn into the variables in the dataframe.
+  - I removed the first 8 lines of the Li-Cor file with `skip = 8`. Those lines have metadata that isn't needed for most data analyses. The following row would then be the names of the columns which turn into the variables in the dataframe.
   - `dplyr::slice(-1)` then removes the first line in that dataframe, which is a bunch of "in" and "out" strings.
+  - I got used `dplyr::filter()` to get rid of lines with "Remark=" in the Obs column. I don't use this function in the LI-6400, but you can keep this if you want them. Perhaps `dplyr::filter()` these lines into a separate dataframe. Then you can `stringr::word(Obs, 2, sep = fixed('='))` on those lines.
   - I did a check for typos in the leaf area. Mistakes happen when you have to manually type and copy/paste leaf areas.
   - I add a new variable called Filename. I personally put important information like the species and plant ID in the name of the data file when taking measurements, which allows me to discern where the data came from. It is not hard to manipulate the filename string to get the important information, e.g. with `strsplit()`, `dplyr::mutate()`, `stringr::word()`, etc.
 - The key function is `purrr::map_dfr`, which allows you to loop through a list and, in each iteration, run a function with the list item as an argument. It then binds the output of each run of the function.
