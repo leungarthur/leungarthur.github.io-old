@@ -8,7 +8,7 @@ The goal of my PhD research is to gain mechanistic understanding into the evolut
 
 **Blog**
 {% for post in site.posts %}
-- {{ post.date }} [{{ post.title }}]({{ post.url | relative_url }}<br>
+- {{ post.date | date_to_string }} [{{ post.title }}]({{ post.url | relative_url }})<br>
 test
 {% endfor %}
 
