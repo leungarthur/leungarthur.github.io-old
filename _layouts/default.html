@@ -14,8 +14,7 @@
         <nav class="nav">
           {% for page in site.pages %}
           {% if page.title == site.nav.title% %}
-          <small><a href="{{ site.nav.url }}">{{ site.nav.title }}</a></small>
-          test
+          <small><a href="{{ page }}">{{ page.title }}</a></small>
           {% endif %}
           {% endfor %}
         </nav>
