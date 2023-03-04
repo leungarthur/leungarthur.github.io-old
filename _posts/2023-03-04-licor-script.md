@@ -3,14 +3,16 @@ layout: post
 title:  "A simple script for reading LI-6400 data files into an R dataframe"
 ---
 
-The LI-6400XT is the one of the most common gas exchange instruments for studying photosynthesis. However, the format of the files that it outputs is not so friendly with common languages for data analysis.
+The LI-6400XT is the one of the most common gas exchange instruments for studying photosynthesis. However, the format of the files that it outputs is not so friendly with common methods for data analysis.
 
 It was time-consuming for me to do the following in Excel:
 1. Take the columns of data that I'm interested in, e.g., the "Photo" column with CO<sub>2</sub> assimilation rate values.
 2. Get rid of empty cells. The "Remark=" lines only have content in the first column, but adds empty cells for the rest of the row.
 3. Merge data from multiple files together.
 
-So, I'd like to share a script that does that. I originally made this for my own research, but thought it would be useful for my Sage lab colleagues. I will note that you have to manually add the leaf area to the raw .xls files and save it as .xlsx, because `readxl` doesn't seem to be able to read the .xls ouputted by the LI-6400. Otherwise, I would have used a separate .csv file with the leaf areas and just directly load the .xls files with the script.
+If you are reading this it is probably because I shared this with you. So you know what I'm talking about.
+
+For my script, you have to manually add the leaf area to the raw .xls files and save it as .xlsx, because `readxl` doesn't seem to be able to read the .xls ouputted by the LI-6400. Otherwise, I would have used a separate .csv file with the leaf areas and just directly load the .xls files with the script.
 
 - I used `here::here()` to get the filepath to the location of the R script as a string. This is useful because it works on macOS and Windows, and it allows the script to be portable (e.g., to be used in a .bat or .command file )
 - I defined a function called `read_licor()`, which takes the path of the .xlsx file from a LI-6400 you want to read and outputs a dataframe with all the columns in the file.
