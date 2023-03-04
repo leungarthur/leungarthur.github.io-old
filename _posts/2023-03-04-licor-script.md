@@ -17,7 +17,7 @@ So, I'd like to share a script that does that. I originally made this for my own
   - I removed the first 8 lines of the Li-Cor file with `skip = 8`. Those lines have important metadata but isn't needed for most data analyses. The following row would then be the names of the columns which turn into the variables in the dataframe.
   - `dplyr::slice(-1)` then removes the first line in that dataframe, which is a bunch of "in" and "out" strings.
   - I did a check for typos in the leaf area. Mistakes happen when you have to manually type and copy/paste leaf areas.
-  - I add a new variable called Filename. I personally put important information like the species and plant ID in the filename, which allows me to discern where the data came from. It is not hard to manipulate the filename string to get the important information, e.g. with `strsplit()`, `dplyr::mutate()`, `stringr::word()`, etc.
+  - I add a new variable called Filename. I personally put important information like the species and plant ID in the name of the data file when taking measurements, which allows me to discern where the data came from. It is not hard to manipulate the filename string to get the important information, e.g. with `strsplit()`, `dplyr::mutate()`, `stringr::word()`, etc.
 - The key function is `purrr::map_dfr`, which allows you to loop through a list and, in each iteration, run a function with the list item as an argument. It then binds the output of each run of the function.
 - Using `dplyr::select()`, the columns of interest are selected to include in the final .csv output.
 
