@@ -38,8 +38,8 @@ author:
   # email: markdotto@gmail.com
 
 # Nav variable
-nav: []
-  # - title: Home
-  #   url: /
-  # - title: Blog
-  #   url: /archive
+nav:
+  - title: Home
+    url: /
+  - title: Blog
+    url: /archive
