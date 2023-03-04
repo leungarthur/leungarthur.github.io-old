@@ -16,7 +16,7 @@ So, I'd like to share a script that does that I will note that you have to manua
 - I removed the first 8 lines of the Li-Cor file with `skip = 8`. Those lines have important metadata but isn't needed for most data analyses. The following row would then be the names of the columns which turn into the variables in the dataframe.
 - `dplyr::slice(-1)` then removes the first line in that dataframe, which is a bunch of "in" and "out" strings.
 - I did a check for typos in the leaf area. Mistakes happen when you have to manually type and copy/paste leaf areas.
-- I add a new variable called Filename. I personally put important information like the species and plant ID in the filename. It is not hard to manipulate the filename string to get the important information, e.g. with `dplyr::mutate()` and `stringr::word()`.
+- I add a new variable called Filename. I personally put important information like the species and plant ID in the filename. It is not hard to manipulate the filename string to get the important information, e.g. with `strsplit()`, `dplyr::mutate()`, `stringr::word()`, etc.
 
 {% highlight R %}
 
