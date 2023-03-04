@@ -12,11 +12,9 @@
           <small>{{ site.tagline }}</small>
         </h3>
         <nav class="nav">
-          {% for page in site.pages %}
-          {% if page.title == site.nav.title% %}
-          <small><a href="{{ page }}">{{ page.title }}</a></small>
+          {% for page in site.nav %}
+          <small><a href="{{ page.url }}">{{ page.title }}</a></small>
           {% endif %}
-          {% endfor %}
         </nav>
       </header>
 
