@@ -1,0 +1,36 @@
+# For documentation on this file, see:
+# https://github.com/riggraz/no-style-please#customize-the-menu
+
+entries:
+  - title: info
+    entries:
+      - title: I'm an ecophysiologist at the <a href='https://eeb.utoronto.ca'>Dept. of Ecology & Evolutionary Biology</a>, U. of Toronto, Canada.
+      - title: The goal of my PhD research is to gain mechanistic understanding into the evolution of C4 photosynthesis, a key innovation in flowering plants that enabled diversification into warm and semi-arid habitats.
+
+  - title: blog
+    post_list:
+      limit: 5
+      show_more: true
+      show_more_text: See archive...
+      show_more_url: archive.html
+
+  # - title: posts by category
+  #   post_list:
+  #     category: example2
+  #     show_more: true
+  #     show_more_text: See more posts...
+  #     show_more_url: example2-archive.html
+
+  # - title: rss
+  #   url: feed.xml
+
+  - title: funding acknowledgements
+    entries:
+      - title: Queen Elizabeth II/Charles E. Eckenwalder Scholarship in Science and Technology
+      - title: NSERC Undergraduate Student Research Award
+      - title: NSERC Canadian Forest Sector supplement
+
+  - title: contact
+    entries:
+      - title: Email (art.leung <at> mail.utoronto.ca)
+      - title: Twitter (<a href='https://twitter.com/aleungplants'>@aleungplants</a>)
