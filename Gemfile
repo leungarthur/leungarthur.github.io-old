@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 source "https://rubygems.org"
 
-gem "kramdown-parser-gfm"
-
-gemspec
+gem "jekyll"
+gem "jekyll-gist"
+gem "jekyll-paginate"
+gem "jekyll-seo-tag"
