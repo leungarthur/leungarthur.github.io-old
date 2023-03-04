@@ -11,6 +11,11 @@
           <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
           <small>{{ site.tagline }}</small>
         </h3>
+        <nav class="nav">
+          {% for page in site.nav %}
+          <small><a href="{{ nav.url }}">{{ nav.title }}</a></small>
+          {% endfor %}
+        </nav>
       </header>
 
       <main>
