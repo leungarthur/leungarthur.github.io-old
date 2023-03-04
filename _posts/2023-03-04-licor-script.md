@@ -14,7 +14,7 @@ If you are reading this it is probably because I shared this with you. So you kn
 
 For my script, you have to manually add the leaf area to the raw .xls files and save it as .xlsx, because `readxl` doesn't seem to be able to read the .xls ouputted by the LI-6400. Otherwise, I would have used a separate .csv file with the leaf areas and just directly load the .xls files with the script.
 
-- I used `here::here()` to get the filepath to the location of the R script as a string. This is useful because it works on macOS and Windows, and it allows the script to be portable (e.g., to be used in a .bat or .command file )
+- I used `here::here()` to get the filepath to the location of the R script as a string. This is useful because it works on macOS and Windows, and it allows the script to be portable (e.g., to be used in a .bat or .command file)
 - I defined a function called `read_licor()`, which takes the path of the .xlsx file from a LI-6400 you want to read and outputs a dataframe with all the columns in the file.
   - I removed the first 8 lines of the Li-Cor file with `skip = 8`. Those lines have metadata that isn't needed for most data analyses. The following row would then be the names of the columns which turn into the variables in the dataframe.
   - `dplyr::slice(-1)` then removes the first line in that dataframe, which is a bunch of "in" and "out" strings.
