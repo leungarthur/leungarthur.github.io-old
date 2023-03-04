@@ -3,7 +3,7 @@ layout: post
 title:  "A simple script for reading LI-6400 data files into an R dataframe"
 ---
 
-The LI-6400XT is the one of the most common gas exchange instruments for studying photosynthesis. However, given its age, the files that it outputs is not so friendly with common languages for data analysis.
+The LI-6400XT is the one of the most common gas exchange instruments for studying photosynthesis. However, the format of the files that it outputs is not so friendly with common languages for data analysis.
 
 It was time-consuming for me to do the following in Excel:
 1. Take the columns of data that I'm interested in, e.g., the "Photo" column with CO<sub>2</sub> assimilation rate values.
