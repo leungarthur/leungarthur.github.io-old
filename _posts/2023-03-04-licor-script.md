@@ -12,9 +12,9 @@ It was time-consuming for me to do the following in Excel:
 
 If you are reading this it is probably because I shared this with you. So you know what I'm talking about.
 
-For my script, you have to manually add the leaf area to the raw .xls files and save it as .xlsx, because `readxl` doesn't seem to be able to read the .xls ouputted by the LI-6400. Otherwise, I would have used a separate .csv file with the leaf areas and just directly load the .xls files with the script.
+For my script, you have to open raw .xls files and save it as .xlsx, because `readxl` doesn't seem to be able to read the .xls ouputted by the LI-6400. Otherwise, I would just directly load the .xls files with the script.
 
-I used `here::here()` to get the filepath to the location of the R script as a string (the directory in which the script is located). This is useful because it works on macOS and Windows, and it allows the script to be portable (e.g., to be used in a .bat or .command file). According to the developers of the package, it works better than setting a working directory.
+I used `here::here()` to get the filepath to the location of the R script as a string (the directory in which the script is located). Arguments in this functions get appended to the path. This is useful because it works on macOS and Windows, and it allows the script to be portable. According to the developers of the package, it works better than setting a working directory.
 
 I defined a function called `read_licor()`, which takes the path of the .xlsx file from a LI-6400 you want to read and outputs a dataframe with all the columns in the file.
 - I removed the first 8 lines of the Li-Cor file with `skip = 8`. Those lines have metadata that isn't needed for most data analyses. The following row would then be the names of the columns which turn into the variables in the dataframe.
