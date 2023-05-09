@@ -5,7 +5,7 @@ title:  "Redirect a doi to off-campus access URL with a browser extension"
 
 When you're off-campus, my browser never remembers that it was logged into my university account, so it always appears to me that I do not have access to journal articles.
 
-I have been using Redictor ([github](https://github.com/einaregilsson/Redirector)), a browser extension that allows redirecting of URLs that match a specific pattern to another URL of your choice.
+I have been using Redirector ([github](https://github.com/einaregilsson/Redirector)), a browser extension that allows redirecting of URLs that match a specific pattern to another URL of your choice.
 
 ![include pattern is *doi.org/*, and redirects to OFFCAMPUSURLhttps://doi.org/$2](/assets/2023-05-09-redirector.png)
 
