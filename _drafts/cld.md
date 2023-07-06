@@ -1,0 +1,97 @@
+Getting compact letter displays from rstatix tests (e.g., Tukey’s test)
+================
+
+In my field, we are often interested in comparing central tendencies
+(e.g., means) between multiple discrete groups. Statistical tests like
+Tukey’s test can be useful, and assigning letters to statistical groups
+are commonly done according to the algorithm of Piepho (2004, *Journal
+of Computational and Graphical Statistics*). There are many options for
+running statistical tests, including base R functions, but when using
+tidyverse packages I prefer rstatix. However, there is no package that
+currently generates compact letter displays (CLD) from the outputs of
+the rstatix function. It turns out that it is not that difficult, if we
+use the functions already available for getting CLDs from base R
+functions (`multcompView::multcompLetters()`)
+
+We load dplyr.
+
+``` r
+library(dplyr)
+```
+
+    ## 
+    ## Attaching package: 'dplyr'
+
+    ## The following objects are masked from 'package:stats':
+    ## 
+    ##     filter, lag
+
+    ## The following objects are masked from 'package:base':
+    ## 
+    ##     intersect, setdiff, setequal, union
+
+Quick look at the dataset.
+
+``` r
+head(iris)
+```
+
+    ##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+    ## 1          5.1         3.5          1.4         0.2  setosa
+    ## 2          4.9         3.0          1.4         0.2  setosa
+    ## 3          4.7         3.2          1.3         0.2  setosa
+    ## 4          4.6         3.1          1.5         0.2  setosa
+    ## 5          5.0         3.6          1.4         0.2  setosa
+    ## 6          5.4         3.9          1.7         0.4  setosa
+
+Use `rstatix` to run a statistical test.
+
+``` r
+test <- iris %>% rstatix::tukey_hsd(Sepal.Length ~ Species)
+test
+```
+
+    ## # A tibble: 3 × 9
+    ##   term    group1     group2     null.value estimate conf.low conf.high    p.adj
+    ## * <chr>   <chr>      <chr>           <dbl>    <dbl>    <dbl>     <dbl>    <dbl>
+    ## 1 Species setosa     versicolor          0    0.93     0.686     1.17  3.39e-14
+    ## 2 Species setosa     virginica           0    1.58     1.34      1.83  3   e-15
+    ## 3 Species versicolor virginica           0    0.652    0.408     0.896 8.29e- 9
+    ## # ℹ 1 more variable: p.adj.signif <chr>
+
+You need a named list with hyphenated groups as names and p-values as
+values.
+
+``` r
+p_values <- test %>% dplyr::mutate(groups = stringr::str_c(group1, group2, sep = "-")) %>% # concatenate group1 and group2 with hyphen
+  dplyr::select(groups, p.adj) %>% # get just the groups and p values
+  tibble::deframe() # turn into named list
+p_values
+```
+
+    ##    setosa-versicolor     setosa-virginica versicolor-virginica 
+    ##             3.39e-14             3.00e-15             8.29e-09
+
+Get letters, then clean up the dataframe.
+
+``` r
+letters <- multcompView::multcompLetters(p_values)$Letters
+letters
+```
+
+    ##     setosa versicolor  virginica 
+    ##        "a"        "b"        "c"
+
+``` r
+letters <- letters %>% # outputs a named list tibble::as_tibble(rownames = "group") %>% # turn into tibble, keeping rownames 
+  tibble::as_tibble(rownames = "group") %>%
+  dplyr::rename(letter = value) # give a more meaningful name
+letters
+```
+
+    ## # A tibble: 3 × 2
+    ##   group      letter
+    ##   <chr>      <chr> 
+    ## 1 setosa     a     
+    ## 2 versicolor b     
+    ## 3 virginica  c

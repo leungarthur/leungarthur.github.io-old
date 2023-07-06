@@ -1,0 +1,53 @@
+---
+title: "Getting compact letter displays from rstatix tests (e.g., Tukey's test)"
+output: github_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In my field, we are often interested in comparing central tendencies (e.g., means) between multiple discrete groups. Statistical tests like Tukey's test can be useful, and assigning letters to statistical groups are commonly done according to the algorithm of Piepho (2004, *Journal of Computational and Graphical Statistics*). There are many options for running statistical tests, including base R functions, but when using tidyverse packages I prefer rstatix. However, there is no package that currently generates compact letter displays (CLD) from the outputs of the rstatix function. It turns out that it is not that difficult, if we use the functions already available for getting CLDs from base R functions (`multcompView::multcompLetters()`)
+
+We load dplyr.
+
+```{r}
+library(dplyr)
+```
+
+Quick look at the dataset.
+
+```{r}
+head(iris)
+```
+
+Use `rstatix` to run a statistical test.
+
+```{r}
+test <- iris %>% rstatix::tukey_hsd(Sepal.Length ~ Species)
+test
+```
+
+You need a named list with hyphenated groups as names and p-values as values.
+
+``` {r}
+p_values <- test %>% dplyr::mutate(groups = stringr::str_c(group1, group2, sep = "-")) %>% # concatenate group1 and group2 with hyphen
+  dplyr::select(groups, p.adj) %>% # get just the groups and p values
+  tibble::deframe() # turn into named list
+p_values
+```
+
+Get letters, then clean up the dataframe.
+
+```{r}
+letters <- multcompView::multcompLetters(p_values)$Letters
+letters
+
+letters <- letters %>% # outputs a named list tibble::as_tibble(rownames = "group") %>% # turn into tibble, keeping rownames 
+  tibble::as_tibble(rownames = "group") %>%
+  dplyr::rename(letter = value) # give a more meaningful name
+letters
+```
