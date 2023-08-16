@@ -33,9 +33,9 @@ library(dplyr)
 # SET WORKING DIRECTORY and CHOOSE COLUMNS OF INTEREST
 
 RUN_TEST <- TRUE # Running a test on one file can save time, in case there are errors with the function
-TEST_NAME <- "2022-10-18 AL pentaphylla 34_.xlsx"
+TEST_NAME <- "2023-08-14 CO K. daig 24H_ leaf area.xlsx"
 COLUMNS <- c("Filename", "Obs", "Photo", "Ci", "Cond", "vp_kPa")
-OUTPUT_NAME <- "merged.csv"
+OUTPUT_NAME <- "merged_licor.csv"
 
 # DEFINE FUNCTION
 # Takes the path of the .xlsx file from a LI-6400 you want to read, outputs a dataframe with all the columns in the file.
@@ -49,7 +49,7 @@ read_licor <- function(infile) {
   if (length(areas) > 1) {
     print(paste(filename,"has more than one unique leaf area."))} # If you had a typo somewhere it would show up as a unique leaf area
   if (2.5 %in% areas) {
-    print("Leaf area is 2.5, did you enter the right leaf area?") # The default leaf area for our LI-6400 is 2.5, so if you didn't change the leaf area it would tell me
+    print("Leaf area is 2.5, did you enter the right leaf area?") # The default leaf area for our LI-6400 is 2.5, so if you didn't change the leaf area it would tell you
   }
   # Add column with filename
   dataframe <- dataframe %>%
@@ -68,8 +68,10 @@ if (RUN_TEST == TRUE) {
 file_list <- list.files(paste(here::here(), sep = ""), pattern="\\.xlsx") # Gets a list of files in the working directory
 merged <- purrr::map_dfr(file_list, ~ read_licor(.)) %>% # Runs the function on all the files and merges them by row (stack on top of each other) using map_dfr
   dplyr::select(all_of(COLUMNS)) # select allows you to choose the columns you want
+
+# WRITE TO CSV FILE
 write.csv(merged,
-          paste(here::here(), OUTPUT_NAME, sep = "/"),
+          here::here(OUTPUT_NAME),
           row.names = FALSE)
 
 {% endhighlight %}
