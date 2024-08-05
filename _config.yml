@@ -39,7 +39,7 @@ author:
 
 # Nav variable
 nav:
-  - title: Home
+  - title: home
     url: /
-  - title: Blog
+  - title: blog
     url: /archive
