@@ -6,7 +6,7 @@ layout: default
 
 I'm a PhD student at the <a href='https://eeb.utoronto.ca'>Dept. of EEB, University of Toronto</a>.
 
-My research in Rowan Sage's lab, in collaboration with Tammy Sage, involves using comparative physiology, anatomy, and ultrastructure to examine the evolution of C<sub>4</sub> photosynthesis. In clarifying the mechanisms that facilitated C<sub>4</sub> evolution in nature, this research sheds light on the building blocks required to engineer this CO<sub>2</sub>-concentrating mechanism into crops.
+My research in Rowan Sage's lab, in collaboration with Tammy Sage, involves using comparative physiology, anatomy, and ultrastructure to examine the evolution of C<sub>4</sub> photosynthesis. By clarifying the mechanisms that facilitated C<sub>4</sub> evolution in nature, this research sheds light on the phenotypi  building blocks required to engineer this CO<sub>2</sub>-concentrating mechanism into crops.
 
 More generally, I'm interested in the ecophysiology of leaves, complex traits, contingency, but honestly anything to do with plants.
 
