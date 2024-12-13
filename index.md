@@ -4,11 +4,11 @@ layout: default
 
 ![pic of me](/assets/portrait.jpg){: width="250" }
 
-I'm a PhD student at the <a href='https://eeb.utoronto.ca'>Dept. of EEB, University of Toronto</a>.
+I'm a PhD candidate with Rowan Sage at the <a href='https://eeb.utoronto.ca'>Dept. of EEB, University of Toronto</a>.
 
-My research in Rowan Sage's lab in collaboration with Tammy Sage involves using comparative physiology, anatomy, and ultrastructure to examine the evolution of C<sub>4</sub> photosynthesis. By clarifying the mechanisms that facilitated C<sub>4</sub> evolution in nature, this research sheds light on the phenotypes required to engineer this CO<sub>2</sub>-concentrating mechanism into crops.
+I am collaborating with Tammy Sage to use comparative physiology, anatomy, and ultrastructure to examine the evolution of C<sub>4</sub> photosynthesis. By clarifying the mechanisms that facilitated C<sub>4</sub> evolution in nature, this research sheds light on the phenotypes required to engineer this CO<sub>2</sub>-concentrating mechanism into crops.
 
-More generally, I'm interested in the ecophysiology of leaves, complex traits, contingency, but honestly anything to do with plants.
+More generally, I'm interested the ecophysiology and biochemistry of photosynthesis and the evolution of complex traits. 
 
 I received my BSc from Western University, where I worked with Norm Hüner on photosynthesis in boreal trees grown under high temperature and CO<sub>2</sub> conditions.
 
