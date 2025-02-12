@@ -30,7 +30,6 @@ me<sup>🌵</sup> mentee<sup>🤩</sup>
 
 ### contact
 - Email (art.leung \<at\> mail.utoronto.ca)
-- Twitter ([@aleungplants](https://twitter.com/aleungplants))
 - Bluesky ([@aleungplants.bsky.social](https://bsky.app/profile/aleungplants.bsky.social))
 
 ### funding acknowledgements
